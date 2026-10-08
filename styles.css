@@ -483,14 +483,12 @@ footer.site-footer{background:#070707;padding:70px 8.5% 28px;letter-spacing:0}
 
 /* Faixa FG STORE: laranja neon com onda de energia controlada */
 .ticker{position:relative;background:#ff5a0a;border:0;box-shadow:0 0 14px rgba(255,90,10,.55),0 0 34px rgba(255,90,10,.3);animation:fg-energy-pulse 2.6s ease-in-out infinite}
-.ticker::before,.ticker::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1}
+.ticker::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1}
 .ticker::before{background:linear-gradient(90deg,transparent,rgba(255,236,190,.55),transparent) no-repeat;background-size:35% 100%;mix-blend-mode:screen;animation:fg-energy-sweep 3.4s ease-in-out infinite}
-.ticker::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='40' viewBox='0 0 200 40'%3E%3Cpath d='M0 20 Q25 6 50 20 T100 20 T150 20 T200 20' fill='none' stroke='%23fff1c9' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center/200px 100%;opacity:.5;filter:drop-shadow(0 0 3px #ffe2a8);animation:fg-energy-flow 2.2s linear infinite}
 .ticker .ticker-track{position:relative;z-index:2;color:#0b0b0b;font-weight:900}
 @keyframes fg-energy-sweep{0%{background-position:-60% 0}100%{background-position:160% 0}}
-@keyframes fg-energy-flow{to{background-position:-200px center}}
 @keyframes fg-energy-pulse{0%,100%{box-shadow:0 0 12px rgba(255,90,10,.5),0 0 28px rgba(255,90,10,.25)}50%{box-shadow:0 0 18px rgba(255,110,30,.75),0 0 44px rgba(255,90,10,.4)}}
-@media(prefers-reduced-motion:reduce){.ticker,.ticker::before,.ticker::after{animation:none}}
+@media(prefers-reduced-motion:reduce){.ticker,.ticker::before{animation:none}}
 .product-card{display:flex;flex-direction:column}
 .product-card>.product-info{flex:1 0 auto}
 .product-buttons{margin-top:auto;padding-top:14px}
