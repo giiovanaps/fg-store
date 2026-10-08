@@ -15,6 +15,20 @@ export function initializeHeroVideo(video, fallbackFrame, stage, motionPreferenc
   let frameReady = false;
   stage.dataset.playback = 'loading';
 
+  // Picked here instead of <source media>, which some mobile browsers ignore and then play the desktop film.
+  const mobileQuery = globalThis.matchMedia?.('(max-width:650px)');
+  function pickSource() {
+    const src = mobileQuery?.matches ? video.dataset.srcMobile : video.dataset.srcDesktop;
+    if (!src || video.getAttribute('src') === src) return;
+    video.src = src;
+    video.load();
+  }
+  pickSource();
+  mobileQuery?.addEventListener?.('change', () => {
+    pickSource();
+    applyMotionPreference();
+  });
+
   function revealFallback() {
     if (frameReady && unavailable) fallbackFrame.hidden = false;
   }
