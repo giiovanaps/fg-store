@@ -459,3 +459,38 @@ footer.site-footer{background:#070707;padding:70px 8.5% 28px;letter-spacing:0}
 
 @media(max-width:400px){.announcement{white-space:nowrap;letter-spacing:.1em}.announcement span,.announcement i{display:none}}
 @media(max-width:650px){.proto-notice{padding:8px 4%;gap:3px}.proto-notice strong{font-size:19px}.proto-notice span{font-size:10px;line-height:1.35}}
+
+/* Botões de compra: Comprar agora (laranja) + Adicionar ao carrinho (minimalista) */
+.product-buttons{display:grid;gap:8px}
+.product-buy{min-height:42px;width:100%;border:0;background:var(--orange);color:#16100d;font:800 10px/1 var(--font-body);letter-spacing:.12em;cursor:pointer;transition:background .2s,transform .2s}
+.product-buy:hover{background:#ff8547;transform:translateY(-1px)}
+.product-add,.detail-add{width:100%;border:1px solid #3a302a;background:transparent;color:#cfc8c1;font:600 10px/1.2 var(--font-body);letter-spacing:.06em;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:border-color .2s,color .2s}
+.product-add{min-height:36px}
+.product-add span,.detail-add span{color:var(--orange);font-size:14px;line-height:1}
+.product-add:hover,.detail-add:hover{border-color:var(--orange);color:#fff}
+.product-add.is-added,.detail-add.is-added{border-color:var(--orange);color:var(--orange)}
+.product-buy:focus-visible,.product-add:focus-visible,.detail-add:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.detail-buttons{display:grid;gap:10px;max-width:400px}
+.detail-buttons .button{width:100%;max-width:none;border:0;cursor:pointer;min-height:51px}
+.detail-add{min-height:46px;font-size:11px;letter-spacing:.08em;color:#e8e1da;border-color:#4a3a30}
+#bagCount.bump{animation:fg-bump .45s ease}
+@keyframes fg-bump{40%{transform:scale(1.35)}}
+@media(max-width:400px){.product-buy{font-size:9px;letter-spacing:.08em;min-height:40px}.product-add{font-size:9px;letter-spacing:.02em;gap:4px}}
+
+/* VER TODA A LOJA em laranja */
+.collection-more{background:var(--orange);border-color:var(--orange);color:#16100d}
+.collection-more:hover{background:#ff8547;border-color:#ff8547}
+
+/* Faixa FG STORE: laranja neon com onda de energia controlada */
+.ticker{position:relative;background:#ff5a0a;border:0;box-shadow:0 0 14px rgba(255,90,10,.55),0 0 34px rgba(255,90,10,.3);animation:fg-energy-pulse 2.6s ease-in-out infinite}
+.ticker::before,.ticker::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1}
+.ticker::before{background:linear-gradient(90deg,transparent,rgba(255,236,190,.55),transparent) no-repeat;background-size:35% 100%;mix-blend-mode:screen;animation:fg-energy-sweep 3.4s ease-in-out infinite}
+.ticker::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='40' viewBox='0 0 200 40'%3E%3Cpath d='M0 20 Q25 6 50 20 T100 20 T150 20 T200 20' fill='none' stroke='%23fff1c9' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center/200px 100%;opacity:.5;filter:drop-shadow(0 0 3px #ffe2a8);animation:fg-energy-flow 2.2s linear infinite}
+.ticker .ticker-track{position:relative;z-index:2;color:#0b0b0b;font-weight:900}
+@keyframes fg-energy-sweep{0%{background-position:-60% 0}100%{background-position:160% 0}}
+@keyframes fg-energy-flow{to{background-position:-200px center}}
+@keyframes fg-energy-pulse{0%,100%{box-shadow:0 0 12px rgba(255,90,10,.5),0 0 28px rgba(255,90,10,.25)}50%{box-shadow:0 0 18px rgba(255,110,30,.75),0 0 44px rgba(255,90,10,.4)}}
+@media(prefers-reduced-motion:reduce){.ticker,.ticker::before,.ticker::after{animation:none}}
+.product-card{display:flex;flex-direction:column}
+.product-card>.product-info{flex:1 0 auto}
+.product-buttons{margin-top:auto;padding-top:14px}

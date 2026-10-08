@@ -1,5 +1,5 @@
 import { createCart } from './cart-state.js?v=4';
-import { initializeHeroVideo } from './hero-video.js?v=13';
+import { initializeHeroVideo } from './hero-video.js?v=14';
 
 const products = JSON.parse(document.querySelector('#catalog-data').textContent);
 const $ = selector => document.querySelector(selector);
@@ -52,12 +52,29 @@ for (const overlay of document.querySelectorAll('.bag-overlay, .account-overlay,
   overlay.addEventListener('click', e => { if (e.target === overlay) hideDialog(); });
 }
 
+// "Adicionar ao carrinho" stays on the page: brief confirmation on the button and a pulse on the bag count.
+function flashAdded(button) {
+  if (!button.dataset.label) button.dataset.label = button.innerHTML;
+  clearTimeout(button.flashTimer);
+  button.classList.add('is-added');
+  button.innerHTML = 'Adicionado ✓';
+  const count = $('#bagCount');
+  count.classList.remove('bump');
+  void count.offsetWidth;
+  count.classList.add('bump');
+  button.flashTimer = setTimeout(() => {
+    button.classList.remove('is-added');
+    button.innerHTML = button.dataset.label;
+  }, 1600);
+}
+
 document.addEventListener('click', e => {
   const add = e.target.closest('[data-add]');
   if (add) {
     bag.add(add.dataset.add);
     renderBag();
-    showDialog('bagOverlay');
+    if (add.hasAttribute('data-quiet')) flashAdded(add);
+    else showDialog('bagOverlay');
   }
   const quantity = e.target.closest('[data-quantity]');
   if (quantity) { bag.change(quantity.dataset.quantity, Number(quantity.dataset.change)); renderBag(); }
