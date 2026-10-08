@@ -1,5 +1,5 @@
 import { createCart } from './cart-state.js?v=4';
-import { initializeHeroVideo } from './hero-video.js?v=10';
+import { initializeHeroVideo } from './hero-video.js?v=11';
 
 const products = JSON.parse(document.querySelector('#catalog-data').textContent);
 const $ = selector => document.querySelector(selector);

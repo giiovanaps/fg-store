@@ -74,6 +74,14 @@ export function initializeHeroVideo(video, fallbackFrame, stage, motionPreferenc
     fallbackFrame.addEventListener('load', frameDecoded, { once: true });
   }
 
+  // Lets the mobile CSS size the banner to the screen space left below the top bars.
+  function measureTop() {
+    stage.style.setProperty('--hero-top', `${Math.round(stage.getBoundingClientRect().top + globalThis.scrollY)}px`);
+  }
+  measureTop();
+  globalThis.addEventListener('resize', measureTop);
+  globalThis.addEventListener('load', measureTop);
+
   motionPreference?.addEventListener?.('change', applyMotionPreference);
   applyMotionPreference();
   // Native looping never swaps src/poster, calls load(), or overlays a final frame.
