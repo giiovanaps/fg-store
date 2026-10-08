@@ -458,4 +458,4 @@ footer.site-footer{background:#070707;padding:70px 8.5% 28px;letter-spacing:0}
 @media print{.proto-watermark{opacity:.2}}
 
 @media(max-width:400px){.announcement{white-space:nowrap;letter-spacing:.1em}.announcement span,.announcement i{display:none}}
-@media(max-width:650px){.video-hero-stage{aspect-ratio:auto;height:min(calc(100vw * 16 / 9),calc(100vh - var(--hero-top,190px)));height:min(calc(100vw * 16 / 9),calc(100svh - var(--hero-top,190px)));min-height:440px;background-size:contain}.video-hero-film{object-fit:contain}.proto-notice{padding:8px 4%;gap:3px}.proto-notice strong{font-size:19px}.proto-notice span{font-size:10px;line-height:1.35}}
+@media(max-width:650px){.proto-notice{padding:8px 4%;gap:3px}.proto-notice strong{font-size:19px}.proto-notice span{font-size:10px;line-height:1.35}}
